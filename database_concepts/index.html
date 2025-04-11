@@ -1,0 +1,1227 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../iot_integration/">
+      
+      
+        <link rel="next" href="../bibliography/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+    
+    
+      
+        <title>Conceptos de Base de Datos - Wiki sobre BaaS y Supabase</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#conceptos-de-base-de-datos-relacional" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Wiki sobre BaaS y Supabase" class="md-header__button md-logo" aria-label="Wiki sobre BaaS y Supabase" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Wiki sobre BaaS y Supabase
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Conceptos de Base de Datos
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Wiki sobre BaaS y Supabase" class="md-nav__button md-logo" aria-label="Wiki sobre BaaS y Supabase" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Wiki sobre BaaS y Supabase
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inicio
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../baas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ¿Qué es BaaS?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supabase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Supabase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iot_integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integración con IoT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Conceptos de Base de Datos
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Conceptos de Base de Datos
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-relacional-y-normalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelo Relacional y Normalización 📊⚙️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claves-primarias-y-foraneas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Claves Primarias y Foráneas 🔑🔗
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restricciones-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restricciones (Constraints) 🚫✋🏼
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integridad-referencial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integridad Referencial 🫱🏾‍🫲🏼🧩
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transacciones-y-cumplimiento-de-las-propiedades-acid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transacciones y Cumplimiento de las Propiedades ACID 🥇🥈
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Índices 🔍🔖
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consultas-sql-y-vistas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultas SQL y Vistas 📜❓
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triggers-y-procedimientos-almacenados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triggers y Procedimientos Almacenados 💥⛓️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguridad-a-nivel-de-fila-row-level-security-rls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seguridad a Nivel de Fila (Row Level Security, RLS) 🛡️🔒
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#en-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      En resumen...
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bibliography/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bibliografía
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modelo-relacional-y-normalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modelo Relacional y Normalización 📊⚙️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#claves-primarias-y-foraneas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Claves Primarias y Foráneas 🔑🔗
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restricciones-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restricciones (Constraints) 🚫✋🏼
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integridad-referencial" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integridad Referencial 🫱🏾‍🫲🏼🧩
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transacciones-y-cumplimiento-de-las-propiedades-acid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transacciones y Cumplimiento de las Propiedades ACID 🥇🥈
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Índices 🔍🔖
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consultas-sql-y-vistas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consultas SQL y Vistas 📜❓
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triggers-y-procedimientos-almacenados" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triggers y Procedimientos Almacenados 💥⛓️
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seguridad-a-nivel-de-fila-row-level-security-rls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seguridad a Nivel de Fila (Row Level Security, RLS) 🛡️🔒
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#en-resumen" class="md-nav__link">
+    <span class="md-ellipsis">
+      En resumen...
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="conceptos-de-base-de-datos-relacional"><strong>Conceptos de Base de Datos Relacional</strong></h1>
+<p>Al utilizar Supabase —que se basa en PostgreSQL—, es fundamental comprender y aplicar varios conceptos clásicos de bases de datos relacionales para garantizar la eficiencia, integridad y escalabilidad de las aplicaciones. A continuación se detallan algunos de los conceptos clave a considerar:</p>
+<h2 id="modelo-relacional-y-normalizacion"><strong>Modelo Relacional y Normalización</strong> 📊⚙️</h2>
+<p>Organizar los datos en tablas relacionadas y aplicar técnicas de normalización (por ejemplo, hasta la tercera forma normal) ayuda a minimizar la redundancia y mantener la coherencia de los datos. La correcta estructura relacional facilita consultas más sencillas y evita inconsistencias [14].</p>
+<p>➡️ <strong>Ejemplo</strong></p>
+<p>Datos No Normalizados (Tabla Inicial)</p>
+<p>Supongamos una tabla <strong>pedidos</strong> que almacena información de ventas:</p>
+<p><img alt="ModeloRelacional" src="../images/tablaejem.png" /></p>
+<p>➡️ <strong>Problemas:</strong></p>
+<p><strong>Redundancia:</strong> Datos del cliente (email, ciudad) se repiten en múltiples pedidos.</p>
+<p><strong>Anomalías:</strong> Si Juan Pérez cambia de ciudad, hay que actualizar múltiples registros.</p>
+<p><strong>Dependencias parciales/transitivas:</strong> El Precio depende del Producto, no del ID_Pedido.</p>
+<p>1️⃣ <strong>Primera Forma Normal (1FN): Valores Atómicos</strong></p>
+<p><strong>Requisito:</strong> Todas las columnas deben tener valores atómicos (sin listas ni datos compuestos).</p>
+<p>En este caso, la tabla ya cumple 1FN porque cada celda tiene un solo valor.</p>
+<p>2️⃣ <strong>Segunda Forma Normal (2FN): Eliminar Dependencias Parciales</strong></p>
+<p><strong>Requisito:</strong> Todas las columnas no clave deben depender completamente de la clave primaria.</p>
+<p><strong>Problema:</strong></p>
+<p>🔹La clave primaria compuesta podría ser (ID_Pedido, Producto), pero:</p>
+<p>🔸Precio depende solo de Producto.</p>
+<p>🔸Cliente, Email_Cliente, y Ciudad_Cliente dependen solo de ID_Pedido.</p>
+<p><strong>Solución:</strong> </p>
+<p>Dividir en tablas.</p>
+<p><strong>Tabla clientes</strong></p>
+<pre><code>CREATE TABLE clientes (
+    id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    ciudad VARCHAR(100)
+);
+</code></pre>
+<p><strong>Tabla productos</strong></p>
+<pre><code>CREATE TABLE productos (
+    id_producto INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100),
+    precio DECIMAL(10, 2)
+);
+</code></pre>
+<p><strong>Tabla pedidos</strong></p>
+<pre><code>CREATE TABLE pedidos (
+    id_pedido INT PRIMARY KEY AUTO_INCREMENT,
+    id_cliente INT,
+    fecha DATE,
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
+);
+</code></pre>
+<p><strong>Tabla detalle_pedidos</strong></p>
+<pre><code>CREATE TABLE detalle_pedidos (
+    id_pedido INT,
+    id_producto INT,
+    cantidad INT,
+    PRIMARY KEY (id_pedido, id_producto),
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+);
+</code></pre>
+<p>3️⃣ <strong>Tercera Forma Normal (3FN): Eliminar Dependencias Transitivas</strong></p>
+<p><strong>Requisito:</strong> Eliminar atributos que dependan de otros atributos no clave.</p>
+<p>Problema en <strong>clientes:</strong></p>
+<p>🔹Ciudad_Cliente depende de id_cliente, pero podría haber redundancia si muchos clientes comparten la misma ciudad.</p>
+<p><strong>Solución:</strong> Separar ciudades en una tabla independiente (opcional, pero útil para evitar duplicados):</p>
+<p><strong>Tabla ciudades</strong></p>
+<pre><code>CREATE TABLE ciudades (
+    id_ciudad INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) UNIQUE
+);
+</code></pre>
+<p><strong>Tabla clientes (actualizada)</strong></p>
+<pre><code>CREATE TABLE clientes (
+    id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    id_ciudad INT,
+    FOREIGN KEY (id_ciudad) REFERENCES ciudades(id_ciudad)
+);
+</code></pre>
+<p><strong>Estructura Final Normalizada (3FN)</strong></p>
+<p>1️⃣ <strong>clientes:</strong> Almacena datos únicos de clientes.</p>
+<p>2️⃣ <strong>productos:</strong> Gestiona información de productos.</p>
+<p>3️⃣ <strong>pedidos:</strong> Relaciona clientes con pedidos.</p>
+<p>4️⃣ <strong>detalle_pedidos:</strong> Detalla productos por pedido.</p>
+<p>5️⃣ <strong>ciudades:</strong> Evita duplicar nombres de ciudades.</p>
+<p>➡️ <strong>Ejemplo de Inserción de Datos</strong></p>
+<pre><code>-- Insertar ciudades
+INSERT INTO ciudades (nombre) VALUES ('Madrid'), ('Barcelona');
+
+-- Insertar clientes
+INSERT INTO clientes (nombre, email, id_ciudad)
+VALUES ('Juan Pérez', 'juan@example.com', 1),
+    ('Ana Gómez', 'ana@example.com', 2);
+
+-- Insertar productos
+INSERT INTO productos (nombre, precio)
+VALUES ('Camiseta', 20.00),
+    ('Pantalón', 35.00),
+    ('Zapatos', 50.00);
+
+-- Insertar pedidos
+INSERT INTO pedidos (id_cliente, fecha) VALUES (1, '2024-01-10'), (2, '2024-01-11'), (1, '2024-01-12');
+
+-- Detalle de pedidos
+INSERT INTO detalle_pedidos (id_pedido, id_producto, cantidad)
+VALUES (1, 1, 2),  -- Pedido 1: 2 camisetas
+    (2, 2, 1),  -- Pedido 2: 1 pantalón
+    (3, 3, 1);  -- Pedido 3: 1 zapato
+</code></pre>
+<p><strong>Ventajas de la Normalización</strong></p>
+<p>🔹 <strong>Menos redundancia:</strong> Datos como email o precio no se repiten.</p>
+<p>🔹 <strong>Integridad:</strong> Actualizar una ciudad en ciudades afecta a todos los clientes relacionados.</p>
+<p>🔹 <strong>Consultas eficientes:</strong> JOINs sencillos entre tablas.</p>
+<p>Ejemplo de consulta para obtener todos los pedidos de Juan Pérez:</p>
+<pre><code>SELECT p.id_pedido, pr.nombre AS producto, d.cantidad, pr.precio
+FROM pedidos p
+JOIN clientes c ON p.id_cliente = c.id_cliente
+JOIN detalle_pedidos d ON p.id_pedido = d.id_pedido
+JOIN productos pr ON d.id_producto = pr.id_producto
+WHERE c.nombre = 'Juan Pérez';
+</code></pre>
+<h2 id="claves-primarias-y-foraneas"><strong>Claves Primarias y Foráneas</strong> 🔑🔗</h2>
+<p>Las claves primarias identifican de forma única cada registro de una tabla, mientras que las claves foráneas establecen las relaciones entre tablas, permitiendo que la integridad referencial se mantenga en el sistema. Esto es crucial para garantizar que las relaciones entre los distintos conjuntos de datos sean válidas.</p>
+<p>➡️ <strong>Ejemplo: Tabla de Usuarios</strong></p>
+<p>Supongamos una tabla llamada <strong>usuarios</strong> que almacena información de usuarios:</p>
+<pre><code>CREATE TABLE usuarios (
+    user_id INT PRIMARY KEY,       -- Clave primaria
+    email VARCHAR(100) UNIQUE,     -- Clave secundaria (candidata)
+    nombre VARCHAR(50),
+    telefono VARCHAR(15) UNIQUE    -- Otra clave secundaria (candidata)
+);
+</code></pre>
+<p>➡️ <strong>Ejemplo de uso:</strong></p>
+<pre><code>-- Insertar un usuario (user_id es obligatorio y único)
+INSERT INTO usuarios (user_id, email, nombre, telefono)
+VALUES (1, 'juan@example.com', 'Juan', '123-456-789');
+
+-- Esto fallaría (user_id duplicado):
+INSERT INTO usuarios (user_id, email, nombre) 
+VALUES (1, 'maria@example.com', 'María');
+
+-- Esto también fallaría (email duplicado):
+INSERT INTO usuarios (user_id, email, nombre) 
+VALUES (2, 'juan@example.com', 'María');
+</code></pre>
+<h2 id="restricciones-constraints"><strong>Restricciones (Constraints)</strong> 🚫✋🏼</h2>
+<p>El uso de restricciones como <strong>UNIQUE</strong>, <strong>NOT NULL</strong>, <strong>CHECK</strong> y <strong>PRIMARY KEY</strong> es vital para asegurar la validez y precisión de los datos almacenados. Estas restricciones ayudan a prevenir la inserción de datos erróneos o inconsistentes.</p>
+<p><strong>Ejemplo de Restricciones en SQL</strong></p>
+<pre><code>-- Crear una tabla de usuarios con restricciones
+CREATE TABLE usuarios (
+    id_usuario INT PRIMARY KEY AUTO_INCREMENT,  -- Clave primaria única y autoincremental
+    nombre VARCHAR(50) NOT NULL,                -- No permite valores nulos
+    email VARCHAR(100) UNIQUE NOT NULL,         -- Debe ser único y no nulo
+    edad INT CHECK (edad &gt; 0),                 -- Edad debe ser mayor a 0
+    rol VARCHAR(20) DEFAULT 'usuario'          -- Valor por defecto y restricción de valores
+        CHECK (rol IN ('admin', 'editor', 'usuario'))
+);
+</code></pre>
+<p><strong>Explicación de las restricciones:</strong></p>
+<p>1️⃣ <strong>PRIMARY KEY</strong> (id_usuario):</p>
+<p>🔹Identifica cada registro de forma única.</p>
+<p>🔹No permite valores duplicados ni NULL.</p>
+<p>🔹Autoincremental: Genera un ID automáticamente al insertar un nuevo usuario.</p>
+<p>2️⃣ <strong>NOT NULL</strong> (nombre, email):</p>
+<p>🔹Obliga a que estos campos siempre tengan un valor .</p>
+<p>🔹Ejemplo: No puedes insertar un usuario sin nombre o email.</p>
+<p>3️⃣ <strong>UNIQUE</strong> (email):</p>
+<p>🔹Asegura que no haya emails duplicados en la tabla.</p>
+<p>🔹Si intentas registrar el mismo email dos veces, la base de datos lanzará un error.</p>
+<p>4️⃣ <strong>CHECK</strong> (edad &gt; 0):</p>
+<p>🔹Valida que la edad sea un número positivo.</p>
+<p>🔹Ejemplo: edad = -5 generaría un error.</p>
+<p>5️⃣ <strong>CHECK + DEFAULT</strong> (rol):</p>
+<p>🔹Define valores permitidos para rol (solo 'admin', 'editor' o 'usuario').</p>
+<p>🔹Si no se especifica un rol, se asigna 'usuario' por defecto.</p>
+<h2 id="integridad-referencial"><strong>Integridad Referencial</strong> 🫱🏾‍🫲🏼🧩</h2>
+<p>Se debe asegurar mediante el uso de claves foráneas que los datos relacionados sean consistentes entre sí. Esto previene, por ejemplo, que se elimine un registro de una tabla padre cuando existen registros relacionados en una tabla hija, a menos que se establezca una acción en cascada.</p>
+<p>➡️ <strong>Ejemplo: Clientes y Pedidos</strong></p>
+<p>Supongamos dos tablas: clientes (padre) y pedidos (hija).</p>
+<p>La tabla pedidos tendrá una clave foránea que referencia a clientes.</p>
+<p>1️⃣ Crear tabla <strong>clientes (padre)</strong>:</p>
+<pre><code>    CREATE TABLE clientes (
+        id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+        nombre VARCHAR(50) NOT NULL
+    );
+</code></pre>
+<p>2️⃣ Crear tabla <strong>pedidos (hija)</strong> con clave foránea:</p>
+<pre><code>CREATE TABLE pedidos (
+    id_pedido INT PRIMARY KEY AUTO_INCREMENT,
+    descripcion VARCHAR(100),
+    id_cliente INT,
+    FOREIGN KEY (id_cliente) 
+        REFERENCES clientes(id_cliente)
+        ON DELETE CASCADE  -- Acción en cascada al eliminar
+        ON UPDATE CASCADE  -- Acción en cascada al actualizar
+);
+</code></pre>
+<p><strong>Explicación de las acciones:</strong></p>
+<p>🔹<strong>FOREIGN KEY (id_cliente):</strong></p>
+<p>🔸La columna id_cliente en pedidos debe existir en la tabla clientes.</p>
+<p>🔸Esto evita que se inserten pedidos con un id_cliente inválido.</p>
+<p>🔹<strong>ON DELETE CASCADE:</strong></p>
+<p>🔸Si se elimina un cliente de la tabla clientes, todos sus pedidos se eliminan automáticamente.</p>
+<p>🔸Esto mantiene la consistencia: no habrá pedidos "huérfanos".</p>
+<p>🔹<strong>ON UPDATE CASCADE:</strong></p>
+<p>🔸Si se actualiza el id_cliente en la tabla clientes, los cambios se propagan automáticamente a la tabla pedidos.</p>
+<p>➡️ <strong>Ejemplos de operaciones</strong></p>
+<p>Inserción válida:</p>
+<pre><code>-- Insertar un cliente
+INSERT INTO clientes (nombre) VALUES ('Juan Pérez');
+
+-- Insertar un pedido vinculado al cliente (id_cliente = 1)
+INSERT INTO pedidos (descripcion, id_cliente) 
+VALUES ('Pedido de camiseta', 1);  -- ¡Válido!
+</code></pre>
+<p>Inserción inválida (falla por integridad referencial):</p>
+<pre><code>-- Intentar insertar un pedido con id_cliente = 99 (no existe)
+INSERT INTO pedidos (descripcion, id_cliente) 
+VALUES ('Pedido inválido', 99);  -- Error: No se puede insertar.
+</code></pre>
+<p>Eliminación con cascada:</p>
+<pre><code>-- Eliminar al cliente con id_cliente = 1
+DELETE FROM clientes WHERE id_cliente = 1;
+
+-- Resultado: 
+-- - El cliente se elimina de `clientes`.
+-- - Todos sus pedidos se eliminan automáticamente de `pedidos`.
+</code></pre>
+<p>Actualización con cascada:</p>
+<pre><code>-- Actualizar el id_cliente de Juan Pérez (de 1 a 100)
+UPDATE clientes SET id_cliente = 100 WHERE id_cliente = 1;
+
+-- Resultado: 
+-- - El cliente ahora tiene id_cliente = 100.
+-- - Los pedidos asociados también actualizan su `id_cliente` a 100.
+</code></pre>
+<p>➡️ <strong>¿Qué sucede sin integridad referencial?</strong></p>
+<p>Si no existiera la clave foránea:</p>
+<p>🔹Podrías insertar pedidos con id_cliente inexistente.</p>
+<p>🔹Al eliminar un cliente, sus pedidos quedarían "huérfanos" (inconsistentes).</p>
+<h2 id="transacciones-y-cumplimiento-de-las-propiedades-acid"><strong>Transacciones y Cumplimiento de las Propiedades ACID</strong> 🥇🥈</h2>
+<p>Las transacciones son un pilar fundamental en sistemas de bases de datos relacionales, ya que garantizan que operaciones complejas se ejecuten de manera confiable y segura , incluso en entornos con múltiples usuarios o procesos concurrentes. Las propiedades <strong>ACID (Atomicidad, Consistencia, Aislamiento y Durabilidad)</strong> son el marco que asegura esta confiabilidad.</p>
+<p><img alt="Supabase" src="../images/acid.png" /></p>
+<p>➡️ <strong>¿Por qué ACID es crucial en sistemas reales?</strong></p>
+<p>🔹<strong>Operaciones complejas:</strong></p>
+<p>En aplicaciones como banca, e-commerce o IoT, donde operaciones multietapa (ej: reservar un producto, descontar inventario, generar factura) deben ser indivisibles.</p>
+<p>🔹<strong>Entornos concurrentes:</strong></p>
+<p>En sistemas con múltiples usuarios o dispositivos IoT actualizando datos simultáneamente, el aislamiento evita inconsistencias.</p>
+<p>🔹<strong>Recuperación ante fallos:</strong></p>
+<p>La durabilidad garantiza que, incluso después de un desastre, los datos estén intactos y recuperables.</p>
+<p>➡️ <strong>Consecuencias de Ignorar ACID</strong></p>
+<p>🔹<strong>Inconsistencia:</strong> </p>
+<p>Datos corruptos o violaciones de reglas de negocio.</p>
+<p>🔹<strong>Pérdida de datos:</strong></p>
+<p>Cambios no guardados tras un fallo.</p>
+<p>🔹<strong>Condiciones de carrera:</strong> </p>
+<p>Resultados impredecibles en sistemas concurrentes.</p>
+<p>➡️ <strong>ACID en Tecnologías Modernas</strong></p>
+<p><strong>Bases de datos relacionales (MySQL, PostgreSQL):</strong> </p>
+<p>🔹Cumplen ACID por diseño.</p>
+<p><strong>Bases de datos NoSQL:</strong> </p>
+<p>🔹Algunas (ej: MongoDB) ofrecen ACID parcial o en transacciones limitadas.</p>
+<p><strong>IoT y sistemas distribuidos:</strong> </p>
+<p>🔹Herramientas como Supabase o CockroachDB implementan ACID para garantizar coherencia en datos distribuidos.</p>
+<p>¡Las propiedades ACID son la base para construir sistemas robustos y confiables! </p>
+<h2 id="indices"><strong>Índices</strong> 🔍🔖</h2>
+<p>La creación de índices sobre las columnas más consultadas mejora significativamente el rendimiento de las consultas, facilitando búsquedas y operaciones JOIN en grandes volúmenes de datos. Sin embargo, se debe equilibrar el número de índices ya que un exceso puede afectar el rendimiento de las operaciones de escritura.</p>
+<p>➡️ <strong>Ejemplo: Tabla usuarios</strong></p>
+<p>Supongamos una tabla con información de usuarios:</p>
+<pre><code>CREATE TABLE usuarios (
+    id_usuario INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50),
+    email VARCHAR(100),
+    fecha_registro DATE
+);
+</code></pre>
+<p>1️⃣ <strong>Crear un índice en una columna frecuentemente consultada</strong></p>
+<p>En caso de realizar muchas búsquedas por email, crear un índice acelerará estas consultas:</p>
+<pre><code>-- Crear un índice en la columna 'email'
+CREATE INDEX idx_email ON usuarios(email);
+</code></pre>
+<p><strong>Beneficio:</strong></p>
+<p>🔹La consulta <strong>SELECT * FROM usuarios WHERE email = 'juan@example.com';</strong> será más rápida , ya que el índice permite buscar el valor directamente, en lugar de escanear toda la tabla</p>
+<p>2️ <strong>Índice compuesto para consultas con múltiples columnas</strong></p>
+<p>Si se suele filtrar por nombre y fecha_registro al mismo tiempo:</p>
+<pre><code>-- Crear un índice compuesto en 'nombre' y 'fecha_registro'
+CREATE INDEX idx_nombre_fecha ON usuarios(nombre, fecha_registro);
+</code></pre>
+<p><strong>Beneficio:</strong></p>
+<p>🔹La consulta <strong>SELECT * FROM usuarios WHERE nombre = 'Juan' AND fecha_registro &gt; '2023-01-01';</strong> usará este índice para mayor eficiencia.</p>
+<p>3️⃣ <strong>¿Cuándo evitar índices?</strong></p>
+<p>🔹En columnas con pocos valores únicos (ej: género: 'M'/'F'), ya que el índice no aporta ventajas.</p>
+<p>🔹En tablas con muchas escrituras (INSERT/UPDATE/DELETE) , ya que los índices ralentizan estas operaciones (el motor debe actualizar el índice cada vez).</p>
+<p>4️⃣ <strong>Eliminar un índice innecesario</strong></p>
+<p>Si un índice no se usa o perjudica el rendimiento, es posible eliminarlo:</p>
+<pre><code>DROP INDEX idx_nombre_fecha ON usuarios;
+</code></pre>
+<h2 id="consultas-sql-y-vistas"><strong>Consultas SQL y Vistas</strong> 📜❓</h2>
+<p>Comprender el lenguaje SQL es esencial para definir consultas más eficientes. Asimismo, el uso de vistas (views) permite encapsular lógica de consulta compleja, simplificando el acceso a conjuntos de datos predefinidos y mejorando la seguridad mediante la exposición limitada de la estructura subyacente.</p>
+<p><strong>Ejemplo: Gestión de Ventas</strong></p>
+<p>Supongamos una base de datos con dos tablas: <strong>productos</strong> y <strong>ventas</strong>.</p>
+<p>1️⃣ Crear tablas:</p>
+<pre><code>-- Tabla de productos
+CREATE TABLE productos (
+    id_producto INT PRIMARY KEY,
+    nombre VARCHAR(50),
+    precio DECIMAL(10,2)
+);
+
+-- Tabla de ventas
+CREATE TABLE ventas (
+    id_venta INT PRIMARY KEY,
+    id_producto INT,
+    cantidad INT,
+    fecha DATE,
+    FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
+);
+</code></pre>
+<p>2️⃣ <strong>Insertar datos de ejemplo:</strong></p>
+<pre><code>-- Productos
+INSERT INTO productos VALUES 
+(1, 'Camiseta', 20.00),
+(2, 'Pantalón', 35.00);
+
+-- Ventas
+INSERT INTO ventas VALUES 
+(101, 1, 2, '2024-01-10'),
+(102, 2, 1, '2024-01-11');
+</code></pre>
+<p>3️⃣ <strong>Consulta SQL compleja</strong></p>
+<p>Supongamos que queremos un reporte de ventas con el <strong>total ganado por producto</strong>:</p>
+<pre><code>SELECT 
+    p.nombre AS producto,
+    SUM(v.cantidad) AS total_vendido,
+    SUM(p.precio * v.cantidad) AS ingresos_totales
+FROM ventas v
+JOIN productos p ON v.id_producto = p.id_producto
+GROUP BY p.nombre;
+</code></pre>
+<p><strong>Resultado:</strong></p>
+<pre><code>| producto  | total_vendido | ingresos_totales |
+|-----------|---------------|------------------|
+| Camiseta  | 2             | 40.00            |
+| Pantalón  | 1             | 35.00            |
+</code></pre>
+<p>4️⃣ <strong>Crear una vista para simplificar</strong></p>
+<p>La consulta anterior es útil, pero repetitiva. Podemos encapsularla en una vista:</p>
+<pre><code>CREATE VIEW reporte_ventas AS
+SELECT 
+    p.nombre AS producto,
+    SUM(v.cantidad) AS total_vendido,
+    SUM(p.precio * v.cantidad) AS ingresos_totales
+FROM ventas v
+JOIN productos p ON v.id_producto = p.id_producto
+GROUP BY p.nombre;
+</code></pre>
+<p>5️⃣ <strong>Usar la vista</strong></p>
+<p>Ahora, en lugar de escribir la consulta completa, simplemente:</p>
+<pre><code>SELECT * FROM reporte_ventas;
+</code></pre>
+<p><strong>Beneficios de la vista:</strong></p>
+<p>🔹<strong>Simplifica el acceso:</strong></p>
+<p>Los usuarios no necesitan conocer la lógica interna.</p>
+<p>🔹<strong>Seguridad:</strong> </p>
+<p>Puedes otorgar permisos solo a la vista, ocultando las tablas originales.</p>
+<p>🔹<strong>Mantenimiento:</strong></p>
+<p>Si cambia la estructura de las tablas, solo se actualiza la vista.</p>
+<p>6️⃣ <strong>Ejemplo de seguridad con vistas</strong></p>
+<p>Imaginemos que queremos que un usuario solo vea ventas del 2024 sin acceso a la tabla <strong>ventas</strong>:</p>
+<pre><code>CREATE VIEW ventas_2024 AS
+SELECT * FROM ventas
+WHERE fecha BETWEEN '2024-01-01' AND '2024-12-31';
+</code></pre>
+<p>Ahora, el usuario puede consultar <strong>ventas_2024</strong> sin ver datos anteriores o futuros.</p>
+<h2 id="triggers-y-procedimientos-almacenados"><strong>Triggers y Procedimientos Almacenados</strong> 💥⛓️</h2>
+<p>Los triggers permiten ejecutar código de forma automática ante ciertos eventos (como inserciones, actualizaciones o eliminaciones), mientras que los procedimientos almacenados encapsulan la lógica de negocio directamente en la base de datos, lo que puede mejorar el rendimiento y la seguridad al centralizar operaciones críticas.</p>
+<p>➡️ <strong>Ejemplo</strong></p>
+<p>Gestionamos una tabla productos y queremos:</p>
+<ol>
+<li>
+<p>Auditar cambios de precios usando un trigger.</p>
+</li>
+<li>
+<p>Insertar productos con validación usando un procedimiento almacenado.</p>
+</li>
+</ol>
+<p>1️⃣ <strong>Crear tabla productos</strong></p>
+<pre><code>    CREATE TABLE productos (
+        id_producto INT PRIMARY KEY AUTO_INCREMENT,
+        nombre VARCHAR(50),
+        precio DECIMAL(10, 2),
+        stock INT
+    );
+</code></pre>
+<p>2️⃣ <strong>Crear tabla de auditoría</strong></p>
+<pre><code>    CREATE TABLE auditoria_precios (
+        id_auditoria INT PRIMARY KEY AUTO_INCREMENT,
+        id_producto INT,
+        precio_anterior DECIMAL(10, 2),
+        precio_nuevo DECIMAL(10, 2),
+        fecha_cambio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    );
+</code></pre>
+<p>3️⃣ <strong>Ejemplo de Trigger</strong></p>
+<p>Trigger: Registra cambios de precio en <strong>auditoria_precios</strong> después de una actualización.</p>
+<pre><code>    DELIMITER $$
+
+    CREATE TRIGGER tr_actualizar_precio
+    AFTER UPDATE ON productos
+    FOR EACH ROW
+    BEGIN
+        IF OLD.precio &lt;&gt; NEW.precio THEN
+            INSERT INTO auditoria_precios (id_producto, precio_anterior, precio_nuevo)
+            VALUES (OLD.id_producto, OLD.precio, NEW.precio);
+        END IF;
+    END$$
+
+    DELIMITER;
+</code></pre>
+<p><strong>¿Qué hace?</strong></p>
+<p>🔹Se activa después de una actualización <strong>(AFTER UPDATE)</strong>.</p>
+<p>🔹Compara el precio anterior <strong>(OLD.precio)</strong> con el nuevo <strong>(NEW.precio)</strong>.</p>
+<p>🔹Si hay cambios, inserta un registro en <strong>auditoria_precios</strong>.</p>
+<p>4️⃣ <strong>Ejemplo de Procedimiento Almacenado</strong></p>
+<p>Procedimiento: Inserta un nuevo producto con validaciones de precio y stock.</p>
+<pre><code>    DELIMITER $$
+
+    CREATE PROCEDURE InsertarProducto(
+        IN p_nombre VARCHAR(50),
+        IN p_precio DECIMAL(10, 2),
+        IN p_stock INT
+    )
+    BEGIN
+        -- Validar precio positivo
+        IF p_precio &lt;= 0 THEN
+            SIGNAL SQLSTATE '45000' 
+                SET MESSAGE_TEXT = 'Error: El precio debe ser mayor a 0';
+        END IF;
+
+        -- Validar stock no negativo
+        IF p_stock &lt; 0 THEN
+            SIGNAL SQLSTATE '45000' 
+                SET MESSAGE_TEXT = 'Error: El stock no puede ser negativo';
+        END IF;
+
+        -- Insertar producto si pasa las validaciones
+        INSERT INTO productos (nombre, precio, stock)
+        VALUES (p_nombre, p_precio, p_stock);
+    END$$
+
+    DELIMITER;
+</code></pre>
+<p><strong>¿Qué hace?</strong></p>
+<p>🔹Recibe parámetros (p_nombre, p_precio, p_stock).</p>
+<p>🔹Valida que el precio sea positivo y el stock no negativo.</p>
+<p>🔹Si hay errores, lanza un mensaje (SIGNAL SQLSTATE).</p>
+<p>🔹Si todo es válido, inserta el producto.</p>
+<p>5️⃣ <strong>Uso en la práctica</strong></p>
+<p>Ejecutar el procedimiento almacenado:</p>
+<pre><code>-- Insertar un producto válido
+CALL InsertarProducto('Camiseta', 20.00, 100);
+
+-- Intentar insertar un producto con precio inválido
+CALL InsertarProducto('Pantalón', -5.00, 50);  -- ¡Falla! (precio negativo)
+</code></pre>
+<p>Ver el trigger en acción:</p>
+<pre><code>-- Actualizar el precio de un producto
+UPDATE productos SET precio = 25.00 WHERE id_producto = 1;
+
+-- Verificar la auditoría
+SELECT * FROM auditoria_precios;
+</code></pre>
+<p>Resultado en <strong>auditoria_precios</strong>:</p>
+<pre><code>| id_auditoria | id_producto | precio_anterior | precio_nuevo | fecha_cambio       |
+|--------------|-------------|-----------------|--------------|--------------------|
+| 1            | 1           | 20.00           | 25.00        | 2024-01-10 12:34:56|
+</code></pre>
+<p>➡️ <strong>Beneficios</strong></p>
+<p>1️⃣ <strong>Triggers:</strong></p>
+<p>🔹Automatizan tareas como auditorías o cálculos sin intervención manual.</p>
+<p>🔹Garantizan que ciertas reglas se cumplan siempre , incluso si los cambios ocurren desde múltiples aplicaciones.</p>
+<p>2️⃣ <strong>Procedimientos almacenados:</strong></p>
+<p>🔹Centralizan la lógica de negocio en la base de datos, evitando duplicar código en aplicaciones.</p>
+<p>🔹Mejoran la seguridad al limitar el acceso directo a las tablas (los usuarios solo ejecutan procedimientos).</p>
+<p>🔹Reducen el tráfico de red al ejecutar operaciones complejas en el servidor.</p>
+<h2 id="seguridad-a-nivel-de-fila-row-level-security-rls"><strong>Seguridad a Nivel de Fila (Row Level Security, RLS)</strong> 🛡️🔒</h2>
+<p>Un aspecto destacable en Supabase es su capacidad para implementar RLS, que permite definir políticas de seguridad en función del usuario autenticado. Esto es crucial en aplicaciones donde se requiere que cada usuario acceda únicamente a los datos autorizados, garantizando una capa adicional de protección.</p>
+<p><strong>Ejemplo</strong></p>
+<p>Una tabla documentos donde cada usuario solo puede acceder a sus propios archivos.</p>
+<p>1️⃣ <strong>Crear la tabla</strong></p>
+<pre><code>CREATE TABLE documentos (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100),
+    contenido TEXT,
+    user_id UUID NOT NULL REFERENCES auth.users(id)  -- Vincula con el usuario autenticado
+);
+</code></pre>
+<p>2️⃣ <strong>Habilitar RLS en la tabla</strong></p>
+<pre><code>ALTER TABLE documentos ENABLE ROW LEVEL SECURITY;
+</code></pre>
+<p>3️⃣ <strong>Crear políticas de seguridad</strong></p>
+<p>🔹Política para <strong>SELECT</strong>:</p>
+<p>Solo permite leer documentos del usuario autenticado.</p>
+<pre><code>CREATE POLICY "Usuarios solo ven sus documentos"
+ON documentos
+FOR SELECT
+USING (auth.uid() = user_id);  -- 'auth.uid()' obtiene el ID del usuario logueado
+</code></pre>
+<p>🔹Política para <strong>INSERT</strong>:</p>
+<p>Solo permite insertar documentos si el <strong>user_id</strong> coincide con el usuario autenticado.</p>
+<pre><code>CREATE POLICY "Usuarios solo insertan sus propios documentos"
+ON documentos
+FOR INSERT
+WITH CHECK (auth.uid() = user_id);
+</code></pre>
+<p>🔹Política para <strong>UPDATE/DELETE</strong>:</p>
+<p>Solo permite modificar/eliminar documentos propios.</p>
+<pre><code>CREATE POLICY "Usuarios solo editan/eliminan sus documentos"
+ON documentos
+FOR UPDATE
+USING (auth.uid() = user_id);
+
+CREATE POLICY "Usuarios solo eliminan sus documentos"
+ON documentos
+FOR DELETE
+USING (auth.uid() = user_id);
+</code></pre>
+<p>4️⃣ <strong>Ejemplo de uso</strong></p>
+<p>Insertar un documento <strong>(como usuario autenticado)</strong>:</p>
+<p>Supongamos que el usuario con <strong>user_id = '123e4567...'</strong> está logueado:</p>
+<pre><code>INSERT INTO documentos (nombre, contenido, user_id)
+VALUES ('Reporte 2024', 'Contenido del reporte...', auth.uid());
+</code></pre>
+<p>Consultar documentos:</p>
+<pre><code>SELECT * FROM documentos;  -- ¡Solo devuelve documentos del usuario logueado!
+</code></pre>
+<p>➡️ <strong>¿Qué sucede sin RLS?</strong></p>
+<p>🔹Sin RLS, un usuario autenticado podría acceder a todos los documentos de la tabla.</p>
+<p>🔹Con RLS, incluso si un usuario intenta acceder a datos ajenos (ej: mediante una API maliciosa), la política bloquea el acceso.</p>
+<h2 id="en-resumen"><strong>En resumen</strong>...</h2>
+<p>Al usar Supabase, se deben considerar los principios básicos del modelo relacional, la normalización, la gestión adecuada de claves y restricciones, el diseño eficiente de consultas e índices, así como el uso de mecanismos adicionales de seguridad y automatización mediante triggers y procedimientos almacenados. Todo esto asegura que la base de datos sea robusta, eficiente y segura para manejar aplicaciones modernas.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.suggest", "search.highlight", "content.code.annotate", "content.tabs.link", "header.autohide"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
