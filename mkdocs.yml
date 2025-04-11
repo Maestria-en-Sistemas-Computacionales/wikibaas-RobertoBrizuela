@@ -1,0 +1,44 @@
+site_name: Wiki sobre BaaS y Supabase
+
+nav:
+  - Inicio: index.md
+  - ¿Qué es BaaS?: baas.md
+  - Supabase: supabase.md
+  - Integración con IoT: iot_integration.md
+  - Conceptos de Base de Datos: database_concepts.md
+  - Bibliografía: bibliography.md
+
+theme:
+  name: 'material'
+  palette:
+    # Paleta de colores para el modo claro y oscuro
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.annotate
+    - content.tabs.link
+    - header.autohide
+
+markdown_extensions:
+  - attr_list   # Permite agregar atributos a los elementos del markdown como imágenes. 
+  - footnotes  # Permite agregar notas al pie de página.
+
+
+extra_css:
+  - css/custom.css
